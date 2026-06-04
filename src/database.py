@@ -117,10 +117,13 @@ def signup_student(activity_name: str, email: str) -> None:
         if existing:
             raise ValueError("Student is already signed up")
 
-        connection.execute(
-            "INSERT INTO enrollments (activity_id, student_id) VALUES (?, ?)",
-            (activity["id"], student["id"]),
-        )
+        try:
+            connection.execute(
+                "INSERT INTO enrollments (activity_id, student_id) VALUES (?, ?)",
+                (activity["id"], student["id"]),
+            )
+        except sqlite3.IntegrityError as exc:
+            raise ValueError("Student is already signed up") from exc
 
 
 def unregister_student(activity_name: str, email: str) -> None:
