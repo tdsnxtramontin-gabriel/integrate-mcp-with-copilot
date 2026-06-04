@@ -37,9 +37,8 @@ A super simple FastAPI application that allows students to view and sign up for 
 ## Database
 
 - Engine: SQLite (local development)
-- Database file: `src/data/school.db`
-- Migrations: SQL files in `src/migrations`
-
+- Database file: `data/school.db`
+- Migrations: SQL files in `migrations/`
 The schema is relational and Postgres-ready in structure:
 
 - `activities`
