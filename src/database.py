@@ -45,7 +45,7 @@ def run_migrations() -> None:
             sql = migration.read_text(encoding="utf-8")
             connection.executescript(sql)
             connection.execute(
-                "INSERT INTO schema_migrations (filename) VALUES (?)",
+                "INSERT OR IGNORE INTO schema_migrations (filename) VALUES (?)",
                 (migration.name,),
             )
 
