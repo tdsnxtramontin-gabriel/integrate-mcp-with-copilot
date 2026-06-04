@@ -27,7 +27,7 @@ A super simple FastAPI application that allows students to view and sign up for 
 3. Run the application:
 
    ```
-   python app.py
+   uvicorn app:app --reload
    ```
 
 4. Open your browser and go to:
