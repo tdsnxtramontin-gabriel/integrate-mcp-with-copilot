@@ -110,8 +110,7 @@ def signup_student(activity_name: str, email: str) -> None:
             SELECT 1
             FROM enrollments
             WHERE activity_id = ? AND student_id = ?
-            """
-            ,
+            """,
             (activity["id"], student["id"]),
         ).fetchone()
 
