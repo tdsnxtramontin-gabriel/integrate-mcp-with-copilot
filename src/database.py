@@ -19,7 +19,8 @@ def get_connection() -> sqlite3.Connection:
 
 def run_migrations() -> None:
     """Apply all SQL files in src/migrations exactly once."""
-    MIGRATIONS_DIR.mkdir(parents=True, exist_ok=True)
+    if not MIGRATIONS_DIR.is_dir():
+        raise FileNotFoundError(f"Migrations directory not found: {MIGRATIONS_DIR}")
 
     with get_connection() as connection:
         connection.execute(
